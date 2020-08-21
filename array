@@ -1,0 +1,22 @@
+def maxlengthsumzero(arr,n):
+    length=0
+    currsum=0
+    d = {}
+    maxlength=0
+    for i in range(n):
+        currsum+=arr[i]
+        if arr[i]==0 or n==0:
+            return -1
+        elif currsum==0:
+             length=i+1
+        elif currsum in d:
+             maxlength=max(length,i-d[currsum])
+        else:
+            d[currsum]=i
+        
+    return maxlength
+if __name__ == "__main__":
+    arr = [15,-2,2,-8,1,7,10,23]
+    n = len(arr)
+    ans = maxlengthsumzero(arr,n)
+    print(ans)
